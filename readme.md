@@ -83,18 +83,21 @@ classDiagram
 
 Entidades y Atributos
 <!-- Clasificación -->
+TABLA CLASIFICACION:
 
 ClasificacionID (PK)
 
 TipoClasificacion
 
 <!-- Género -->
+TABLA GENERO:
 
 GeneroID (PK)
 
 Nombre
 
 <!-- Película -->
+TABLA PELICULAS:
 
 PeliculaID (PK)
 
@@ -107,6 +110,7 @@ ClasificacionID (FK)
 GeneroID (FK)
 
 <!-- Sala -->
+TABLA SALA:
 
 SalaID (PK)
 
@@ -115,6 +119,7 @@ Nombre
 Capacidad
 
 <!-- Función -->
+TABLA FUNCIONES:
 
 FuncionID (PK)
 
@@ -127,6 +132,7 @@ PeliculaID (FK)
 SalaID (FK)
 
 <!-- Cliente -->
+TABLA CLIENTES:
 
 ClienteID (PK)
 
@@ -143,7 +149,8 @@ MedioPagoID (PK)
 Metodo (credito o debito)
 
 <!-- Venta -->
-
+TABLA VENTAS:
+    
 VentaID (PK)
 
 CantidadBoletos
