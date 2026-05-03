@@ -13,24 +13,88 @@ PARTE 2..............................
 ![alt text](image-1.png)
 
 PARTE 3..............................
-UML
+UML Diagram para dbdiagram.io
+
+classDiagram
+    class CLIENTE {
+        int ID_Cliente [PK]
+        String Nombre
+        String Correo
+        String Telefono
+    }
+    
+    class RESERVA {
+        int ID_Reserva [PK]
+        int ID_Funcion [FK]
+        int ID_Cliente [FK]
+        int ID_TipoPago [FK]
+        String Asiento
+        float Monto_Base
+        float Monto_Total_Calculado [Derivado]
+    }
+    
+    class FUNCION {
+        int ID_Funcion [PK]
+        int ID_Pelicula [FK]
+        int ID_Sala [FK]
+        Datetime Horario
+    }
+    
+    class PELICULA {
+        int ID_Pelicula [PK]
+        int ID_Clasificacion [FK]
+        int ID_Genero [FK]
+        String Nombre_Pelicula
+        int Duracion_Minutos
+    }
+    
+    class SALA {
+        int ID_Sala [PK]
+        String Nombre_Sala
+        int Capacidad_Maxima
+    }
+    
+    class TIPO_PAGO {
+        int ID_TipoPago [PK]
+        String Descripcion
+    }
+
+    class CLASIFICACION {
+        int ID_Clasificacion [PK]
+        String Nombre_Clasificacion
+    }
+
+    class GENERO {
+        int ID_Genero [PK]
+        String Nombre_Genero
+    }
+
+    %% Relaciones y Cardinalidades
+    CLIENTE "1" --> "0..*" RESERVA : realiza
+    FUNCION "1" --> "0..*" RESERVA : incluye
+    PELICULA "1" --> "0..*" FUNCION : tiene programada
+    SALA "1" --> "0..*" FUNCION : agenda
+    TIPO_PAGO "1" --> "0..*" RESERVA : procesa
+    CLASIFICACION "1" --> "0..*" PELICULA : agrupa
+    GENERO "1" --> "0..*" PELICULA : categoriza
+
 ![alt text](https://cdn.discordapp.com/attachments/
 1167558045216288848/1499508753639149770/image.png?ex=69f7081a&is=69f5b69a&hm=b62f91e9d9e21733be160f3e36599794e92d573093ad4f04359457a468b700ae)
 
 Entidades y Atributos
-Clasificación
+<!-- Clasificación -->
 
-ClasificacionID (PK)git
+ClasificacionID (PK)
 
-Nombre (ej. PG-13, R)
+TipoClasificacion
 
-Género
+<!-- Género -->
 
 GeneroID (PK)
 
 Nombre
 
-Película
+<!-- Película -->
 
 PeliculaID (PK)
 
@@ -42,7 +106,7 @@ ClasificacionID (FK)
 
 GeneroID (FK)
 
-Sala
+<!-- Sala -->
 
 SalaID (PK)
 
@@ -50,7 +114,7 @@ Nombre
 
 Capacidad
 
-Función
+<!-- Función -->
 
 FuncionID (PK)
 
@@ -62,7 +126,7 @@ PeliculaID (FK)
 
 SalaID (FK)
 
-Cliente
+<!-- Cliente -->
 
 ClienteID (PK)
 
@@ -76,9 +140,9 @@ MedioPago
 
 MedioPagoID (PK)
 
-Metodo (ej. Tarjeta de Crédito, Efectivo)
+Metodo (credito o debito)
 
-Venta
+<!-- Venta -->
 
 VentaID (PK)
 
@@ -88,7 +152,7 @@ PrecioUnitario
 
 FechaVenta
 
-/MontoTotal (Atributo derivado: CantidadBoletos * PrecioUnitario)
+/MontoTotal (Atributo derivado)
 
 FuncionID (FK)
 
